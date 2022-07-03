@@ -1,11 +1,27 @@
 package stepDefinitions;
 
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.PageLoadStrategy;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Contact_Us_Steps {
+
+    private WebDriver driver;
+
+    @Before
+    public void setUp(){
+        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/java/drivers/chromedriver.exe" );
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+        driver = new ChromeDriver(chromeOptions);
+        driver.manage().window().maximize();
+    }
 
     @Given("I access the webdriver university contact us page")
     public void i_access_the_webdriver_university_contact_us_page() {
